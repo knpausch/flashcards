@@ -18,5 +18,6 @@ describe('Deck', function() {
 
         const deck = new Deck(cards);
         expect(deck.cards).to.be.a("array");
+        expect(deck.cards[0]).to.be.a("object");
     });
 });
