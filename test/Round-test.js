@@ -4,7 +4,8 @@ const expect = chai.expect;
 const Round = require('../src/Round');
 
 describe('Round', function() {
-    it('should return true', function() {
-        expect(true).to.equal(true);
+    it('should be a function', function() {
+        const round = new Round();
+        expect(Round).to.be.a('function');
     });
 });
