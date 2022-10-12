@@ -8,6 +8,11 @@ const Turn = require('../src/Turn');
 
 
 describe('Round', function() {
+
+    // beforeEach(() => {
+
+    // });
+
     it('should be a function', function() {
         expect(Round).to.be.a('function');
     });
@@ -121,7 +126,7 @@ describe('Round', function() {
         const turn1 = new Turn("array", card1);
         round.takeTurn(turn1);
 
-        //Where I left off. Deck array should be card2, card3, card1
-        expect(round.deck[0]).to.deep.equal(card2);
+        expect(round.currentCard).to.deep.equal(card2);
+        expect(round.deck.cards[0]).to.deep.equal(card2);
     });
 });

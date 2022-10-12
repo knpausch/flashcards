@@ -16,10 +16,9 @@ class Round {
        if(result === false){
         this.incorrectGuesses.push(turn.card.id);
        }
-
-    // This will move first element to end of array
-    //    this.deck.push(deck[0]);
-    //    this.deck.shift();
+       
+       this.deck.cards.shift();
+       this.currentCard = this.deck.cards[0];
 
        return turn.giveFeedback();
     }
