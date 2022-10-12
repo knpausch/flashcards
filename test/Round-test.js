@@ -30,6 +30,6 @@ describe('Round', function() {
         const deck = new Deck(cards);
         const round = new Round(deck);
 
-        expect(round.currentCard).to.deep.equal(card1);
+        expect(round.currentCard).to.deep.equal(cards[0]);
     });
 });
