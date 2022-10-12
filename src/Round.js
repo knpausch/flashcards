@@ -12,7 +12,10 @@ class Round {
 
     takeTurn(turn){
        this.turns++;
-
+       let result = turn.evaluateGuess();
+       if(result === false){
+        this.incorrectGuesses.push(turn.card.id);
+       }
        return turn.giveFeedback();
     }
 }
