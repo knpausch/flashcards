@@ -9,6 +9,12 @@ class Round {
     returnCurrentCard(){
         return this.currentCard;
     }
+
+    takeTurn(turn){
+       this.turns++;
+
+       return turn.giveFeedback();
+    }
 }
 
 module.exports = Round;
