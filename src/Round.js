@@ -30,6 +30,11 @@ class Round {
         
         return result;
     }
+
+    endRound(){
+        const score = this.calculatePercentCorrect();
+        return `** Round over! ** You answered ${score}% of the questions correctly!`;
+    }
 }
 
 module.exports = Round;
