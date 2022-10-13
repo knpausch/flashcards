@@ -121,7 +121,42 @@ describe('Round', function() {
         const turn1 = new Turn("array", card1);
         round.takeTurn(turn1);
 
-        //Where I left off. Deck array should be card2, card3, card1
-        expect(round.deck[0]).to.deep.equal(card2);
+        expect(round.currentCard).to.deep.equal(card2);
+        expect(round.deck.cards[0]).to.deep.equal(card2);
     });
+
+    it('calculatePercentCorrect should return percentage of correct guesses', function() {
+        const card1 = new Card(1, "What allows you to define a set of related information using key-value pairs?", ["object", "array", "function"], "object");
+        const card2 = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
+        const card3 = new Card(3, "What type of prototype method directly modifies the existing array?", ["mutator method", "accessor method", "iteration method"], "mutator method");
+        const cards = [card1, card2, card3];
+        const deck = new Deck(cards);
+        const round = new Round(deck);
+        const turn1 = new Turn("object", card1);
+        round.takeTurn(turn1);
+        const turn2 = new Turn("function", card2);
+        round.takeTurn(turn2);
+        const turn3 = new Turn("function", card3);
+        round.takeTurn(turn3);
+
+        expect(round.calculatePercentCorrect()).to.equal(33);
+    });    
+
+    it('endRound should return an message displaying their score', function() {
+        const card1 = new Card(1, "What allows you to define a set of related information using key-value pairs?", ["object", "array", "function"], "object");
+        const card2 = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
+        const card3 = new Card(3, "What type of prototype method directly modifies the existing array?", ["mutator method", "accessor method", "iteration method"], "mutator method");
+        const cards = [card1, card2, card3];
+        const deck = new Deck(cards);
+        const round = new Round(deck);
+        const turn1 = new Turn("object", card1);
+        round.takeTurn(turn1);
+        const turn2 = new Turn("function", card2);
+        round.takeTurn(turn2);
+        const turn3 = new Turn("function", card3);
+        round.takeTurn(turn3);
+        const score = round.calculatePercentCorrect()
+
+        expect(round.endRound()).to.equal(`** Round over! ** You answered 33% of the questions correctly!`);
+    });  
 });
