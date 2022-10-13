@@ -7,7 +7,7 @@ const util = require('./util');
 
 class Game {
   constructor(round) {
-    this.currentRound = 0;
+    this.currentRound = {};
     this.round = round;
   }
 
@@ -62,8 +62,9 @@ class Game {
   }
 
   newRound(deck){
-    this.currentRound++;
     const round = new Round(deck);
+    this.currentRound = round;
+
 
     return round;
   }
@@ -73,7 +74,11 @@ class Game {
 
     const deck = this.putsCardsInDeck(cards);
 
-    this.newRound(deck);
+    const round = this.newRound(deck);
+
+    this.printMessage(deck, round);
+
+    this.printQuestion(round);
   }
 }
 

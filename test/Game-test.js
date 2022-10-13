@@ -17,7 +17,7 @@ describe('Game', function() {
         const round = new Round(deck);
         const game = new Game(round);
        
-        expect(game.currentRound).to.equal(0);
+        expect(game.currentRound).to.deep.equal({});
     });
 
     it('start should be a function', function() {
@@ -73,15 +73,6 @@ describe('Game', function() {
 
     });
 
-    it('newRound should increment currentRound', function() {
-        const game = new Game();
-        const cards = game.createCards();
-        const deck = new Deck(cards);
-        game.newRound(deck);
-
-        expect(game.currentRound).to.equal(1);
-    });
-
     it('newRound should initialize Round with Deck', function() {
         const testCard1 = {
             id: 1,
@@ -96,5 +87,14 @@ describe('Game', function() {
 
         expect(result.returnCurrentCard()).to.deep.equal(testCard1);
     });
+
+    it('newRound should updated currentRound to newly created Round', function() {
+      const game = new Game();
+      const cards = game.createCards();
+      const deck = new Deck(cards);
+      const round = game.newRound(deck);
+
+      expect(game.currentRound).to.equal(round);
+  });
 });
 
