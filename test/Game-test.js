@@ -31,5 +31,27 @@ describe('Game', function() {
        
         expect(game.start).to.be.a("function");
     });
+
+    it('createsCards should create an array of Cards', function() {
+        const testCard1 = {
+            id: 1,
+            question: 'What allows you to define a set of related information using key-value pairs?',
+            answers: [ 'object', 'array', 'function' ],
+            correctAnswer: 'object'
+          };
+        const testCard30 = {
+            id: 30,
+            question: 'What type of methods are functions that allow you to manipulate the value of a particular data type or class?',
+            answers: [ 'prototype method', 'object', 'callback function' ],
+            correctAnswer: 'prototype method'
+          };
+        const deck = new Deck();
+        const round = new Round(deck);
+        const game = new Game(round);
+
+        game.createCards();
+        expect(game.createCards()[0]).to.deep.equal(testCard1);
+        expect(game.createCards()[29]).to.deep.equal(testCard30);
+    });
 });
 
