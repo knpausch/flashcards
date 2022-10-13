@@ -45,13 +45,31 @@ describe('Game', function() {
             answers: [ 'prototype method', 'object', 'callback function' ],
             correctAnswer: 'prototype method'
           };
-        const deck = new Deck();
-        const round = new Round(deck);
-        const game = new Game(round);
-
+        const game = new Game();
         game.createCards();
+
         expect(game.createCards()[0]).to.deep.equal(testCard1);
         expect(game.createCards()[29]).to.deep.equal(testCard30);
+    });
+
+    it('putsCardsInDeck should initialize Deck with a cards array', function() {
+        const testCard1 = {
+            id: 1,
+            question: 'What allows you to define a set of related information using key-value pairs?',
+            answers: [ 'object', 'array', 'function' ],
+            correctAnswer: 'object'
+          };
+        const testCard30 = {
+            id: 30,
+            question: 'What type of methods are functions that allow you to manipulate the value of a particular data type or class?',
+            answers: [ 'prototype method', 'object', 'callback function' ],
+            correctAnswer: 'prototype method'
+          };
+        const testCards = [testCard1, testCard30];
+        const game = new Game();
+
+        expect(game.putsCardsInDeck(testCards)).to.be.a("object");
+        expect(game.putsCardsInDeck(testCards).cards[0]).to.deep.equal(testCard1);
     });
 });
 
