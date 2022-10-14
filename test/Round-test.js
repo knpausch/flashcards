@@ -75,10 +75,9 @@ describe('Round', function() {
         const cards = [card1, card2, card3];
         const deck = new Deck(cards);
         const round = new Round(deck);
-        const turn = new Turn("array", card1);
 
-        round.takeTurn(turn);
-        round.takeTurn(turn);
+        round.takeTurn("array");
+        round.takeTurn("array");
 
         expect(round.turns).to.equal(2);
     });
@@ -90,9 +89,8 @@ describe('Round', function() {
         const cards = [card1, card2, card3];
         const deck = new Deck(cards);
         const round = new Round(deck);
-        const turn = new Turn("array", card1);
 
-        expect(round.takeTurn(turn)).to.equal("incorrect!");
+        expect(round.takeTurn("array")).to.equal("incorrect!");
     });
 
     it('takeTurn should add index of card incorrecly answered in incorrectGuesses array', function() {
