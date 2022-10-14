@@ -75,10 +75,9 @@ describe('Round', function() {
         const cards = [card1, card2, card3];
         const deck = new Deck(cards);
         const round = new Round(deck);
-        const turn = new Turn("array", card1);
 
-        round.takeTurn(turn);
-        round.takeTurn(turn);
+        round.takeTurn("array");
+        round.takeTurn("array");
 
         expect(round.turns).to.equal(2);
     });
@@ -90,9 +89,8 @@ describe('Round', function() {
         const cards = [card1, card2, card3];
         const deck = new Deck(cards);
         const round = new Round(deck);
-        const turn = new Turn("array", card1);
 
-        expect(round.takeTurn(turn)).to.equal("incorrect!");
+        expect(round.takeTurn("array")).to.equal("incorrect!");
     });
 
     it('takeTurn should add index of card incorrecly answered in incorrectGuesses array', function() {
@@ -102,13 +100,12 @@ describe('Round', function() {
         const cards = [card1, card2, card3];
         const deck = new Deck(cards);
         const round = new Round(deck);
-        const turn1 = new Turn("array", card1);
-        round.takeTurn(turn1);
+        round.takeTurn("array");
         expect(round.incorrectGuesses).to.deep.equal([1]);
 
-        const turn2 = new Turn("object", card1);
-        round.takeTurn(turn2);
+        round.takeTurn("array");
         expect(round.incorrectGuesses).to.deep.equal([1]);
+
     });
 
     it('takeTurn should make the next card as the current card for the next round', function() {
@@ -118,8 +115,8 @@ describe('Round', function() {
         const cards = [card1, card2, card3];
         const deck = new Deck(cards);
         const round = new Round(deck);
-        const turn1 = new Turn("array", card1);
-        round.takeTurn(turn1);
+        const turn1 = new Turn("array");
+        round.takeTurn("array");
 
         expect(round.currentCard).to.deep.equal(card2);
         expect(round.deck.cards[0]).to.deep.equal(card2);
@@ -132,12 +129,9 @@ describe('Round', function() {
         const cards = [card1, card2, card3];
         const deck = new Deck(cards);
         const round = new Round(deck);
-        const turn1 = new Turn("object", card1);
-        round.takeTurn(turn1);
-        const turn2 = new Turn("function", card2);
-        round.takeTurn(turn2);
-        const turn3 = new Turn("function", card3);
-        round.takeTurn(turn3);
+        round.takeTurn("object");
+        round.takeTurn("function");
+        round.takeTurn("function");
 
         expect(round.calculatePercentCorrect()).to.equal(33);
     });    
@@ -149,13 +143,9 @@ describe('Round', function() {
         const cards = [card1, card2, card3];
         const deck = new Deck(cards);
         const round = new Round(deck);
-        const turn1 = new Turn("object", card1);
-        round.takeTurn(turn1);
-        const turn2 = new Turn("function", card2);
-        round.takeTurn(turn2);
-        const turn3 = new Turn("function", card3);
-        round.takeTurn(turn3);
-        const score = round.calculatePercentCorrect()
+        round.takeTurn("object");
+        round.takeTurn("function");
+        round.takeTurn("function");
 
         expect(round.endRound()).to.equal(`** Round over! ** You answered 33% of the questions correctly!`);
     });  

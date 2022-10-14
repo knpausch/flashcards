@@ -22,6 +22,7 @@ const getRound = (round) => {
 }
 
 const confirmUpdate = (id, round) => {
+
   const feedback = round.takeTurn(id);
   return {
     name: 'feedback',
