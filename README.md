@@ -7,10 +7,11 @@ This is an interactive tool utilized in the terminal that quizes the user with 3
 ![flashcards_AdobeExpress](https://user-images.githubusercontent.com/19957834/195741327-2a063aec-549f-4893-a36e-3bd0d8da5df3.gif)
 
 ### Technologies Used:
+JavaScript, Mocha & Chai.
 This project took me ~24 hours to make
 
 ### Installation Instructions:
-1. Fork repo on GitHub
-1. Clone SSH code
-1. Open terminal and git clone SSH link
-1. Run command: node index.js to run the code
+- Clone the repo to your local machine
+- `cd` into it
+- Run `npm install`
+- Run `node index.js` to start the game
